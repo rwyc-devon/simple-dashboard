@@ -48,6 +48,14 @@ main > section.pending
 main > section.status-dead
 {
 	cursor: initial;
+	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
+}
+main > section:not(.status-dead):hover,
+main > section:not(.status-dead):focus
+{
+	box-shadow: 0.25em 0.25em 0.5em #aaa;
+	top: -0.1em;
+	left: -0.1em;
 }
 main > section:not(.status-dead):hover,
 main > section:not(.status-dead):focus
