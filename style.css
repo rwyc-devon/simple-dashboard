@@ -1,0 +1,168 @@
+*
+{
+	margin: 0;
+	outline: none;
+}
+body
+{
+	font-family: sans;
+	color: #111;
+	background: #eee;
+	margin: 0;	
+}
+h1, main > section
+{
+	box-shadow: 0.25em 0.25em 1em #ccc;
+}
+h1
+{
+	text-align: center;
+	background: #111;
+	color: #eee;
+	margin: 0;
+	padding: 0.1em 0.3em;
+}
+main > section
+{
+	display: block;
+	margin: 0.5em;
+	padding: 0.5em;
+	background: #fff;
+	color: #eee;
+	border-radius: 0.5em;
+	cursor: pointer;
+	position: relative;
+	transition: opacity 0.2s;
+	min-height: 4em;
+	vertical-align: top;
+	overflow: hidden;
+}
+.has-bar
+{
+	padding-bottom: 0.25em;
+}
+main > section.pending
+{
+	opacity: 0.5;
+}
+main > section.status-dead
+{
+	cursor: initial;
+}
+main > section:not(.status-dead):hover,
+main > section:not(.status-dead):focus
+{
+	box-shadow: 0.25em 0.25em 0.5em #aaa;
+	top: -0.1em;
+	left: -0.1em;
+}
+main > section:not(.status-dead):active
+{
+	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
+	top: 0.1em;
+	left: 0.1em;
+}
+main > section.status-critical
+{
+	background: #fbb;
+	color: #fbb;
+}
+main > section.status-warn
+{
+	background: #ff9;
+	color: #ff9;
+}
+main > section.status-good
+{
+	background: #cfb;
+	color: #cfb;
+}
+main > section.status-dead
+{
+	background: #ccc;
+	color: #888;
+}
+main > section.status-dead span
+{
+	color: #888;
+}
+main > section.status-dead span::before,
+main > section.status-dead span::after
+{
+	display: none;
+}
+h2
+{
+	background: #111;
+	color: inherit;
+	font-size: 1em;
+	margin: -0.5em -0.5em 0.5em -0.5em;
+	padding: 0.25em 0.5em;
+	text-transform: capitalize;
+}
+main > section > :not(h2) > *
+{
+	font-size: 2em;
+	color: #111;
+	font-style: bold;
+}
+[data-icon]
+{
+	color: inherit;
+}
+[data-icon]::after
+{
+	content: attr(data-icon);
+	float: right;
+	color: inherit;
+	background: #111;
+	border-radius: 2em;
+	line-height: 2em;
+	width: 2em;
+	text-align: center;
+}
+.bargraph
+{
+	display: block;
+	background: #111;
+	height: 0.25em;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.bargraph::after
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 99999px;
+	background: rgba(0,0,0,0.3);
+}
+.percent::after
+{
+	content: "%";
+	color: #666;
+}
+.money::before
+{
+	content: "$";
+	color: #666;
+}
+@media (min-width: 480px)
+{
+	h1
+	{
+		text-align: left;
+	}
+	main > section
+	{
+		display: inline-block;
+		min-width: 200px;
+	}
+	main
+	{
+		padding: 0.5em;
+	}
+}
