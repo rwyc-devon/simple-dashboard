@@ -117,8 +117,9 @@ main > section > :not(h2) > *
 	color: inherit;
 	background: #111;
 	border-radius: 2em;
-	line-height: 2em;
-	width: 2em;
+	font-size: 1.5em;
+	line-height: 1.5em;
+	width: 1.5em;
 	text-align: center;
 }
 .bargraph

@@ -1,4 +1,6 @@
 <?php
+	#From les.net
+	#modified by Devon to get the apikey and idkey from globals instead of in the script
 
 function lesnet_api($url,$json_string,$authenticate=0) {
 
