@@ -21,6 +21,7 @@ h1
 	color: #eee;
 	margin: 0;
 	padding: 0.1em 0.3em;
+	font-size: 1.25em;
 }
 main > section
 {
@@ -37,7 +38,7 @@ main > section
 	vertical-align: top;
 	overflow: hidden;
 }
-.has-bar
+main > section > :not(h2)
 {
 	padding-bottom: 0.25em;
 }
@@ -48,13 +49,13 @@ main > section.pending
 main > section:not(.status-dead):hover,
 main > section:not(.status-dead):focus
 {
-	box-shadow: 0.25em 0.25em 0.5em #aaa;
+	box-shadow: 0.25em 0.25em 0.5em #888;
 	top: -0.05em;
 	left: -0.05em;
 }
 main > section:not(.status-dead):active
 {
-	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
+	box-shadow: 0.1em 0.1em 0.5em #888 inset;
 	top: 0.05em;
 	left: 0.05em;
 }
@@ -79,10 +80,17 @@ main > section.status-dead
 	color: #888;
 	cursor: initial;
 	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
+	min-height: 0;
 }
-main > section.status-dead span
+main > section.status-dead h2
+{
+	margin-bottom: -0.5em;
+	background: #555;
+}
+main > section.status-dead > :not(h2)
 {
 	color: #888;
+	display: none;
 }
 main > section.status-dead span::before,
 main > section.status-dead span::after
@@ -100,15 +108,15 @@ h2
 }
 main > section > :not(h2) > *
 {
-	font-size: 2em;
 	color: #111;
 	font-style: bold;
+	font-size: 1.5em;
 }
 .bargraph
 {
 	display: block;
 	background: #111;
-	height: 0.25em;
+	height: 0.5rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -123,15 +131,29 @@ main > section > :not(h2) > *
 	width: 99999px;
 	background: rgba(0,0,0,0.3);
 }
+.percent::after,
+.money::before
+{
+	opacity: 0.5;
+}
 .percent::after
 {
 	content: "%";
-	color: #666;
 }
 .money::before
 {
 	content: "$";
-	color: #666;
+}
+@media (min-width: 250px)
+{
+	h1
+	{
+		font-size: 2em;
+	}
+	main > section > :not(h2) > *
+	{
+		font-size: 2em;
+	}
 }
 @media (min-width: 250px)
 {
@@ -151,6 +173,7 @@ main > section > :not(h2) > *
 		width: 1.5em;
 		text-align: center;
 	}
+	main
 }
 @media (min-width: 480px)
 {
@@ -166,5 +189,18 @@ main > section > :not(h2) > *
 	main
 	{
 		padding: 0.5em;
+	}
+	main > section.status-dead
+	{
+		min-height: 4em;
+	}
+	main > section.status-dead h2
+	{
+		margin-bottom: 0.5em;
+		background: #111;
+	}
+	main > section.status-dead :not(h2)
+	{
+		display: block;
 	}
 }
