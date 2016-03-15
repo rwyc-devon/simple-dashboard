@@ -32,5 +32,5 @@ function widget_html_example() { #return the html that'll go in your widget. NOT
 	#there are CSS classes for .money and .percent. They just use ::before and ::after stuff to add a $ or % symbol in a lighter color. Note that it conflicts with the icon thing, so make sure not to give the same element a data-icon attribute and one of these classes.
 	$data=widget_data_example();
 	$percent=date("s")/60*100;
-	return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span>$data</span></div>";
+	return "<div class='has-bar' data-icon='&#9760'><span class='bargraph' style='width:$percent%'></span><span>$data</span></div>";
 }
