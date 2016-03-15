@@ -45,11 +45,6 @@ main > section.pending
 {
 	opacity: 0.5;
 }
-main > section.status-dead
-{
-	cursor: initial;
-	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
-}
 main > section:not(.status-dead):hover,
 main > section:not(.status-dead):focus
 {
@@ -77,8 +72,8 @@ main > section.status-critical
 }
 main > section.status-warn
 {
-	background: #ff9;
-	color: #ff9;
+	background: #ffa;
+	color: #ffa;
 }
 main > section.status-good
 {
@@ -89,6 +84,8 @@ main > section.status-dead
 {
 	background: #ccc;
 	color: #888;
+	cursor: initial;
+	box-shadow: 0.1em 0.1em 0.5em #aaa inset;
 }
 main > section.status-dead span
 {
