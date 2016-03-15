@@ -4,7 +4,7 @@
 #===============
 
 # title: sets page title
-$title="Ram Wools Dashboard";
+$title="My Cool Dashboard";
 # $widgets: Supply an array of names of widgets to display, in the order you want them displayed
 $widgets=array(
 	"lesbalance",
