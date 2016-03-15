@@ -3,7 +3,7 @@ function widget_timeout_load() {
 	return 10;
 }
 function widget_title_load() {
-	return "load average";
+	return "load avg";
 }
 function widget_data_load() {
 	static $load = null;

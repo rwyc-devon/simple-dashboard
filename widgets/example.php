@@ -12,7 +12,7 @@ function widget_timeout_example() {
 }
 function widget_title_example() { #widget title. Have it be lowercase because the CSS transforms it to be capitalized.
 	#Don't trust programmers to have proper grammar
-	return "example widget";
+	return "example";
 }
 function widget_data_example() { #return the data you want printed. In this case it's the time which is about the lamest thing ever.
 	#this might get called multiple times per page load, so if there's any cost to the operation at all, or any chance of race condition, do yourself a favor and use static variables and stuff to cache the result.
