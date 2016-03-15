@@ -11,17 +11,13 @@ function reloadWidget(e)
 	var widget=e.getAttribute("data-widgetname");
 	var xhr=new XMLHttpRequest();
 	xhr.addEventListener("load", function(){
-		var element=new DOMParser().parseFromString(this.response, "text/html").body.childNodes[0];
-		updateHtml(e,element);
+		var newE=new DOMParser().parseFromString(this.response, "text/html").body.childNodes[0];
+		e.parentNode.replaceChild(newE, e);
+		enqueueWidget(newE);
 	});
 	xhr.open("GET", "?widget="+widget);
 	e.classList.add("pending");
 	xhr.send();
-}
-function updateHtml(oldWidget, newWidget)
-{
-	oldWidget.parentNode.replaceChild(newWidget, oldWidget);
-	enqueueWidget(newWidget);
 }
 (function(){
 	var widgets=document.getElementsByTagName("section");
