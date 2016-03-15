@@ -14,10 +14,9 @@ function widget_title_dummy() { #widget title. Have it be lowercase because the 
 function widget_data_dummy() { #return the data you want printed. In this case it's the time which is about the lamest thing ever.
 	#this might get called multiple times per page load, so if there's any cost to the operation at all, or any chance of race condition, do yourself a favor and use static variables and stuff to cache the result.
 	static $result;
-	if(isset($result) {
-		return $result;
+	if($result===null) {
+		$result=date("H:i:s");
 	}
-	$result=date("H:i:s");
 	return $result;
 }
 function widget_status_dummy() { #return either "dead", "good", "normal", "warn", or "critical". Hopefully it's obvious when to return what. Except maybe "dead". That basically just means "the widget isn't working right", not "[important thing] is dead". Save that for "critical"
