@@ -8,7 +8,7 @@ function enqueueWidget(e)
 }
 function reloadWidget(e)
 {
-	var widget=e.getAttribute("data-widgetname");
+	var widget=e.getAttribute("data-widget");
 	var xhr=new XMLHttpRequest();
 	xhr.addEventListener("load", function(){
 		var newE=new DOMParser().parseFromString(this.response, "text/html").body.childNodes[0];

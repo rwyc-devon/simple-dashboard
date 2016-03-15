@@ -1,0 +1,25 @@
+{
+	"title": "My Cool Dashboard",
+	"ajaxOnFirstLoad": false,
+	"widgets": [
+		{"name": "example"},
+		{
+			"name": "lesbalance",
+			"options": {
+				"warn": 40,
+				"critical": 20,
+				"max": 60,
+				"apikey": "",
+				"idkey": ""
+			}
+		},
+		{
+			"name": "load",
+			"options": {
+				"warn": 50,
+				"critical": 75,
+				"cpus": 1
+			}
+		}
+	]
+}

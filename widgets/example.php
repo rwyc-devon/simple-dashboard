@@ -2,6 +2,7 @@
 #THIS IS PROBABLY A GOOD STARTING POINT IF YOU WANT TO MAKE UR OWN WIDGET
 
 #These are the bare minimum functions. Change "example" in each function name to the name of your widget. so instead of widget_timeout_example it'd be widget_timemout_coffeemaker or whatever. Similarly, name the php file after your widget (has to be exact). So instead of example.php you'd call it coffeemaker.php or whatever. The name has to be exact.
+#Each function will be passed an object called "options" as the first parameter. It contains all the options for the particular widget given in config.json
 
 function widget_timeout_example() {
 	return 1; #How often to refresh in seconds. -1 means never reload. 0 means spam the server like crazy. Don't set it to 0.

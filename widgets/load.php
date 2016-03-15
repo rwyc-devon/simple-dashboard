@@ -1,41 +1,39 @@
 <?php
-function widget_timeout_load() {
+function widget_timeout_load($options) {
 	return 10;
 }
-function widget_title_load() {
+function widget_title_load($options) {
 	return "load avg";
 }
-function widget_data_load() {
+function widget_data_load($options) {
 	static $load = null;
 	if($load===null) {
 		$load=sys_getloadavg()[0]*100;
 	}
 	return $load;
 }
-function widget_html_load() {
-	global $load_cores;
-	$load=widget_data_load();
-	$normload=widget_load_norm();
+function widget_html_load($options) {
+	$load=widget_data_load($options);
+	$normload=widget_load_norm($options);
 	return "<div class='has-bar' data-icon='&#9729'><span class='bargraph' style='width:$normload%'></span><span class='percent'>$load</span></div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
 }
-function widget_load_norm()
+function widget_load_norm($options)
 {
 	global $load_cores;
+	$cpus=isset($options->cpus)?$options->cpus:1;
 	if(isset($load_cores)) {
-		return widget_data_load()/$load_cores;
+		return widget_data_load($options)/$load_cores;
 	}
-	return widget_data_load();
+	return widget_data_load($options);
 }
-function widget_status_load() {
-	global $load_critical;
-	global $load_warn;
-	global $load_good;
-	global $load_cores;
-	$normload=widget_load_norm()/$load_cores;
-	if($normload >= $load_critical) {
+function widget_status_load($options) {
+	$critical=$options->critical;
+	$warn=$options->warn;
+	$normload=widget_load_norm($options);
+	if($normload >= $critical) {
 		return "critical";
 	}
-	else if($normload >= $load_warn) {
+	else if($normload >= $warn) {
 		return "warn";
 	}
 	else if(isset($normload)){

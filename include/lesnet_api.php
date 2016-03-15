@@ -1,8 +1,8 @@
 <?php
 	#From les.net
-	#modified by Devon to get the apikey and idkey from globals instead of in the script
+	#modified by Devon to get the apikey and idkey from params instead of in the script
 
-function lesnet_api($url,$json_string,$authenticate=0) {
+function lesnet_api($url,$json_string,$authenticate=0,$apikey='',$idkey='') {
 
 	// version 0.0.1
 
@@ -10,14 +10,14 @@ function lesnet_api($url,$json_string,$authenticate=0) {
 	// [0] - URL 
 	// [1] - $json : a json string
 	// [2] - $authenticate : send authentication credentials yes/no
+	// [2] - $apikey
+	// [2] - $idkey
 
-	global $les_apikey;
-	global $les_idkey;
 	$json_request = json_decode($json_string,TRUE);
 
 	if ($authenticate) {
-		$json_request['authentication']['apikey']	= $les_apikey;
-		$json_request['authentication']['idkey']	= $les_idkey;
+		$json_request['authentication']['apikey']	= $apikey;
+		$json_request['authentication']['idkey']	= $idkey;
 	}
 
 	if (!isset($json_request['sequence'])) {

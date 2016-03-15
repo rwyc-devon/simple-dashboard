@@ -12,4 +12,4 @@
 		$baseURL="${_SERVER["SERVER_NAME"]}/$path";
 	})();
 #load config
-require_once "$root/config.php";
+$config=json_decode(file_get_contents("$root/config.json"));
