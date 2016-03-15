@@ -15,7 +15,13 @@ else { ?>
 	<body>
 		<h1><?php echo $config->title?$config->title:"Dashboard"?></h1>
 		<main>
-			<?php foreach($config->widgets as $index=>$widget){widget($index,$config->ajaxOnFirstLoad?"empty-html":"html"); echo "\n";}?>
+			<?php
+				foreach($config->widgets as $index=>$widget) {
+					widget($index,$config->ajaxOnFirstLoad?"empty-html":"html");
+?>
+
+			<?php #to preserve indentation
+				}?>
 		</main>
 		<script src='ajax_stuff.js'></script>
 	</body>
