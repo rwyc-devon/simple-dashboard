@@ -1,5 +1,8 @@
 <?php
 #THIS IS PROBABLY A GOOD STARTING POINT IF YOU WANT TO MAKE UR OWN WIDGET
+
+#These are the bare minimum functions. Change "example" in each function name to the name of your widget. so instead of widget_timeout_dummy it'd be widget_timemout_coffeemaker or whatever. Similarly, name the php file after your widget (has to be exact). So instead of dummy.php you'd call it coffeemaker.php or whatever. The name has to be exact.
+
 function widget_timeout_dummy() {
 	return -1; #How often to refresh in seconds. -1 means never reload. 0 means spam the server like crazy. Don't set it to 0.
 	#A cool trick is that this is called on every refresh, and the client javascript updates the interval for each refresh.
@@ -29,5 +32,4 @@ function widget_html_dummy() { #return the html that'll go in your widget. NOTE:
 	$data=widget_data_dummy();
 	$percent=35; #IRL you'd probably set this to something relevant
 	return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$balance</span></div>";
-
 }
