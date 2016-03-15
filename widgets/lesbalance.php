@@ -2,7 +2,7 @@
 include "$root/include/lesnet_api.php";
 include "$root/config.php";
 function widget_timeout_lesbalance() {
-	return (widget_data_lesbalance()=="failed")?10:60; #Try more frequently if it fails.
+	return (widget_data_lesbalance()=="")?10:60; #Try more frequently if it fails.
 }
 function widget_title_lesbalance() {
 	return "les.net balance";
@@ -11,7 +11,7 @@ function widget_data_lesbalance() {
 	static $balance=null;
 	if($balance===null) {
 		$result=lesnet_api("account/balance","{}",TRUE);
-		$balance=$result? (json_decode($result)->balance) : "failed";
+		$balance=$result? (json_decode($result)->balance) : "";
 	}
 	return $balance;
 }
@@ -25,7 +25,7 @@ function widget_status_lesbalance() {
 	global $les_critical;
 	global $les_warn;
 	$balance=widget_data_lesbalance();
-	if($balance=="failed") {
+	if($balance=="") {
 		return "dead";
 	}
 	else if($balance<=$les_critical) {
