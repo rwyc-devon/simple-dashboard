@@ -1,6 +1,5 @@
 <?php
-include "$root/include/lesnet_api.php";
-include "$root/config.php";
+require_once("$root/include/lesnet_api.php");
 function widget_timeout_lesbalance($options) {
 	return (widget_data_lesbalance($options)=="")?10:60; #Try more frequently if it fails.
 }
