@@ -21,10 +21,7 @@ function widget_load_norm($options)
 {
 	global $load_cores;
 	$cpus=isset($options->cpus)?$options->cpus:1;
-	if(isset($load_cores)) {
-		return widget_data_load($options)/$load_cores;
-	}
-	return widget_data_load($options);
+	return widget_data_load($options)/$cpus;
 }
 function widget_status_load($options) {
 	$critical=$options->critical;
