@@ -12,7 +12,7 @@ function widget_timeout_example() {
 }
 function widget_title_example() { #widget title. Have it be lowercase because the CSS transforms it to be capitalized.
 	#Don't trust programmers to have proper grammar
-	return "test widget";
+	return "example widget";
 }
 function widget_data_example() { #return the data you want printed. In this case it's the time which is about the lamest thing ever.
 	#this might get called multiple times per page load, so if there's any cost to the operation at all, or any chance of race condition, do yourself a favor and use static variables and stuff to cache the result.
@@ -31,5 +31,5 @@ function widget_html_example() { #return the html that'll go in your widget. NOT
 	#for an icon, set the attribute 'data-icon' to the unicode symbol for the icon you want, or a letter or something I guess. Sometime I'll add an icon font so there's more options than just Unicode's "misc symbols".
 	$data=widget_data_example();
 	$percent=35; #IRL you'd probably set this to something relevant
-	return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$balance</span></div>";
+	return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$data</span></div>";
 }
