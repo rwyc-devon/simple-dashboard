@@ -2,7 +2,7 @@
 include "$root/include/lesnet_api.php";
 include "$root/config.php";
 function widget_timeout_lesbalance() {
-	return 60;
+	return (widget_data_lesbalance()=="failed")?10:60; #Try more frequently if it fails.
 }
 function widget_title_lesbalance() {
 	return "les.net balance";

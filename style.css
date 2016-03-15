@@ -106,22 +106,6 @@ main > section > :not(h2) > *
 	color: #111;
 	font-style: bold;
 }
-[data-icon]
-{
-	color: inherit;
-}
-[data-icon]::after
-{
-	content: attr(data-icon);
-	float: right;
-	color: inherit;
-	background: #111;
-	border-radius: 2em;
-	font-size: 1.5em;
-	line-height: 1.5em;
-	width: 1.5em;
-	text-align: center;
-}
 .bargraph
 {
 	display: block;
@@ -150,6 +134,25 @@ main > section > :not(h2) > *
 {
 	content: "$";
 	color: #666;
+}
+@media (min-width: 250px)
+{
+	[data-icon]
+	{
+		color: inherit;
+	}
+	[data-icon]::after
+	{
+		content: attr(data-icon);
+		float: right;
+		color: inherit;
+		background: #111;
+		border-radius: 2em;
+		font-size: 1.5em;
+		line-height: 1.5em;
+		width: 1.5em;
+		text-align: center;
+	}
 }
 @media (min-width: 480px)
 {
