@@ -16,8 +16,6 @@ Put it in a web-accessible directory. Move `config.sample.php` to `config.php` a
 
 ###Features
 
-- Add checks so you can't request a widget through ajax that has been disabled in config
-- Use classes or namespaces for widgets and just make that whole thing less ugly
 - Grouping of widgets, titles for groups. Maybe ability to collapse/expand groups
 - Caching of data cross-request, perhaps using CHDB or something similar, so that many users querying at once will not hammer upstream APIs
 - Add a webfont. Also maybe a dedicated icon font.
