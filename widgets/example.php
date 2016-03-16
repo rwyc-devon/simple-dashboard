@@ -1,15 +1,17 @@
 <?php
 #THIS IS PROBABLY A GOOD STARTING POINT IF YOU WANT TO MAKE UR OWN WIDGET
 
-#These are the bare minimum functions. Change "example" in each function name to the name of your widget. so instead of widget_timeout_example it'd be widget_timemout_coffeemaker or whatever. Similarly, name the php file after your widget (has to be exact). So instead of example.php you'd call it coffeemaker.php or whatever. The name has to be exact.
-#Each function will be passed an object called "options" as the first parameter. It contains all the options for the particular widget given in config.json
+#the class name should be ${name_of_your_widget}Widget. The file name should be ${name_of_your_widget}.php.
+
 class exampleWidget
 {
 	private $time;
 	function __construct ($options) {
+
 	}
 	public function value() { #return the data you want printed. In this case it's the time which is about the lamest thing ever.
-	#this might get called multiple times per page load, so if there's any cost to the operation at all, or any chance of race condition, do yourself a favor and use static variables and stuff to cache the result using class properties or, if you're terrible, static variables.
+	#this might get called multiple times per page load, so if there's any cost to the operation at all, or any chance of race condition, do yourself a favor and use class properties and stuff to cache the result using class properties or, if you're terrible, static variables.
+	
 		if(!isset($this->value)) {
 			$this->time=date("H:i:s");
 		}
@@ -34,8 +36,8 @@ class exampleWidget
 		#for a bar, give the <div> a 'has-bar' class, and create a <span> with a class of 'bargraph', and style the width as a percentage. I mean really just look at the exampe below.
 		#for an icon, set the attribute 'data-icon' to the unicode symbol for the icon you want, or a letter or something I guess. Some day I'll add an icon font so there's more options than just Unicode's "misc symbols".
 		#there are CSS classes for .money and .percent. They just use ::before and ::after stuff to add a $ or % symbol in a lighter color. Note that it conflicts with the icon thing, so make sure not to give the same element a data-icon attribute and one of these classes.
-		$this->value();
+		$time=$this->value(); #NEVER assume that $this->time (or whatever variable you use for caching) is set. ALWAYS call the value() method.
 		$percent=date("s")/59*100;
-		return "<div class='has-bar' data-icon='&#9760'><span class='bargraph' style='width:$percent%'></span><span>$this->time</span></div>";
+		return "<div class='has-bar' data-icon='&#9760'><span class='bargraph' style='width:$percent%'></span><span>$time</span></div>";
 	}
 }
