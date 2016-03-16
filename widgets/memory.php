@@ -34,11 +34,11 @@ class memoryWidget extends cmdWidget
 	}
 	public function status() {
 		$this->value();
-		$percent=$this->result/$this->max;
-		if($percent > $this->critical) {
+		$percent=$this->result/$this->max*100;
+		if($percent >= $this->critical) {
 			return "critical";
 		}
-		if($percent > $this->warn) {
+		if($percent >- $this->warn) {
 			return "warn";
 		}
 		return "good";
