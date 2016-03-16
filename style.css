@@ -154,10 +154,6 @@ main > section > :not(h2) > *
 	{
 		font-size: 2em;
 	}
-	[data-icon]
-	{
-		color: inherit;
-	}
 	[data-icon]::after
 	{
 		content: attr(data-icon);
