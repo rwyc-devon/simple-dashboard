@@ -2,6 +2,7 @@
 {
 	margin: 0;
 	outline: none;
+	transition: font-size 0.1s, padding 0.1s, margin 0.1s, height 0.1s, width 0.1s;
 }
 body
 {
