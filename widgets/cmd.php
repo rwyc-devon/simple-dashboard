@@ -40,10 +40,10 @@ class cmdWidget
 		$icon="";
 		$class="";
 		if(isset($this->icon)) {
-			$icon=" data-icon='$icon'";
+			$icon=" data-icon='$this->icon'";
 		}
 		if(isset($this->class)) {
-			$class=" class='$class'";
+			$class=" class='$this->class'";
 		}
 		if(isset($this->max)) {
 			$percent=$this->result/$this->max*100;
