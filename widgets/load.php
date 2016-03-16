@@ -1,42 +1,51 @@
 <?php
-function widget_timeout_load($options) {
-	return 10;
-}
-function widget_title_load($options) {
-	return "load avg";
-}
-function widget_data_load($options) {
-	static $load = null;
-	if($load===null) {
-		$load=sys_getloadavg()[0]*100;
-	}
-	return $load;
-}
-function widget_html_load($options) {
-	$load=widget_data_load($options);
-	$normload=widget_load_norm($options);
-	return "<div class='has-bar' data-icon='&#9729'><span class='bargraph' style='width:$normload%'></span><span class='percent'>$load</span></div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
-}
-function widget_load_norm($options)
+class loadWidget
 {
-	global $load_cores;
-	$cpus=isset($options->cpus)?$options->cpus:1;
-	return widget_data_load($options)/$cpus;
-}
-function widget_status_load($options) {
-	$critical=$options->critical;
-	$warn=$options->warn;
-	$normload=widget_load_norm($options);
-	if($normload >= $critical) {
-		return "critical";
+	private $load;
+	private $normload;
+	private $warn=50;
+	private $critical=75;
+	private $cpus=1;
+	function __construct ($options) {
+		if(isset($options->warn)) {
+			$warn=$options->warn;
+		}
+		if(isset($options->critical)) {
+			$critical=$options->critical;
+		}
+		if(isset($options->cpus)) {
+			$cpus=$options->cpus;
+		}
 	}
-	else if($normload >= $warn) {
-		return "warn";
+	public function value() {
+		if($this->load===null) {
+			$this->load=sys_getloadavg()[0]*100;
+			$this->normload=$this->load/$this->cpus;
+		}
+		return $this->load;
 	}
-	else if(isset($normload)){
-		return "good";
+	public function timeout() {
+		return "10";
 	}
-	else {
-		return "failed";
+	public function title() {
+		return "load avg";
+	}
+	public function status() {
+		$this->value();
+		if($this->normload >= $this->critical) {
+			return "critical";
+		}
+		else if($this->normload >= $this->warn) {
+			return "warn";
+		}
+		else if(isset($this->normload)){
+			return "good";
+		}
+		else {
+			return "failed";
+		}
+	}
+	public function html() {
+		return "<div class='has-bar' data-icon='&#9729'><span class='bargraph' style='width:$this->normload%'></span><span class='percent'>$this->load</span></div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
 	}
 }
