@@ -1,4 +1,6 @@
 <?php
+	#TODO: dump this and write my own version of this right in the lesBalance widget code
+
 	#From les.net
 	#modified by Devon to get the apikey and idkey from params instead of in the script
 
