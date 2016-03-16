@@ -1,6 +1,6 @@
 <?php
-require_once "include/base.php";
-require_once "include/dashboard.php";
+include "include/base.php";
+include "include/dashboard.php";
 if(isset($_GET["widget"]) && $_GET["widget"] >= 0 && $_GET["widget"] < count($config->widgets)) {
 	widget($_GET["widget"]);
 }

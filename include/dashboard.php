@@ -5,8 +5,7 @@ function widget($index, $type="html")
 	global $config;
 	$name=$config->widgets[$index]->name;
 	$options=isset($config->widgets[$index]->options)?$config->widgets[$index]->options:null;
-	require_once("$root/widgets/$name.php");
-	$class="${name}widget";
+	$class="${name}Widget";
 	$widget=new $class($options);
 	$title=$widget->title();
 	if($type=="empty-html") {
