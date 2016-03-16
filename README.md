@@ -12,7 +12,7 @@ Licensed under GPLv3
 
 ##Installation
 
-Just needs php (version 5 or 7), and the `curl` extension.
+Just needs php (version 7 or a recent version of 5), and the `curl` extension.
 
 Put it in a web-accessible directory. Move `config.sample.php` to `config.php` and edit it. Make sure your permissions are `700` or so, at least for your config since it has api keys and stuff in it. Also, make sure that your server respects `.htaccess` files, or configure your server manually to not serve up your config file or the `.git` directory. *This is very important, or else you will be serving up your config file, complete with API keys, to the public!*
 
