@@ -35,7 +35,7 @@ class exampleWidget
 		#for an icon, set the attribute 'data-icon' to the unicode symbol for the icon you want, or a letter or something I guess. Some day I'll add an icon font so there's more options than just Unicode's "misc symbols".
 		#there are CSS classes for .money and .percent. They just use ::before and ::after stuff to add a $ or % symbol in a lighter color. Note that it conflicts with the icon thing, so make sure not to give the same element a data-icon attribute and one of these classes.
 		$this->value();
-		$percent=date("s")/60*100;
+		$percent=date("s")/59*100;
 		return "<div class='has-bar' data-icon='&#9760'><span class='bargraph' style='width:$percent%'></span><span>$this->time</span></div>";
 	}
 }
