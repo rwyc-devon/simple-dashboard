@@ -1,16 +1,17 @@
 <?php
-	(function()
-	{
-		global $root, $baseURL;
+function init()
+{
+	global $root, $baseURL;
 
-		#figure out root dir of site
-		$root=dirname(dirname(__FILE__));
+	#figure out root dir of site
+	$root=dirname(dirname(__FILE__));
 
-		#figure out the base URL of the site
-		$docroot="${_SERVER["DOCUMENT_ROOT"]}/";
-		$path=preg_replace(":^$docroot:", "", $root);
-		$baseURL="${_SERVER["SERVER_NAME"]}/$path";
-	})();
+	#figure out the base URL of the site
+	$docroot="${_SERVER["DOCUMENT_ROOT"]}/";
+	$path=preg_replace(":^$docroot:", "", $root);
+	$baseURL="${_SERVER["SERVER_NAME"]}/$path";
+}
+init();
 #setup autoloading
 spl_autoload_register( function($class) {
 	global $root;
