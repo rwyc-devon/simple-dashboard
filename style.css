@@ -132,7 +132,9 @@ main > section > :not(h2) > *
 	background: rgba(0,0,0,0.3);
 }
 .percent::after,
-.money::before
+.money::before,
+.suffix,
+.prefix
 {
 	opacity: 0.5;
 }

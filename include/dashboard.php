@@ -4,7 +4,7 @@ function widget($index, $type="html")
 	global $root;
 	global $config;
 	$name=$config->widgets[$index]->name;
-	$options=isset($config->widgets[$index]->options)?$config->widgets[$index]->options:null;
+	$options=isset($config->widgets[$index]->options)?$config->widgets[$index]->options:array();
 	$class="${name}Widget";
 	$widget=new $class($options);
 	$title=$widget->title();
