@@ -8,6 +8,8 @@ It's very simple, cute, responsive, and simply cutely responsive. It probably wo
 
 Not recommended for internet-facing servers, at least until there's been more testing.
 
+I will be adding more plugins!
+
 Licensed under GPLv3
 
 ##Installation
@@ -27,3 +29,10 @@ Put it in a web-accessible directory. Move `config.sample.php` to `config.php` a
 ###Widgets
 
 - Memory usage, temperature, disk usage, CPU usage, uptime, load. Also some small remote script and an option to pull from a remote host so that one can monitor a bunch of servers at once. This will require a widget format that allows supplying params from the config file, and will benefit from grouping (so you can group by host). This is what would make this actually useful to people.
+- App/service specific stuff as the need arises. I probably won't add support for the app you're using unless I happen to be using it too. However it is very easy to make your own widget!
+
+##Contributing
+
+Take a look at `widgets/example.php` for a basic guide to making widgets. Each widget is a PHP class. Also check out `widgets/cmd.php` which makes it extremely easy to create widgets that use shell commands.
+
+Pull requests welcome!
