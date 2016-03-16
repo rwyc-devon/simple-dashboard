@@ -20,7 +20,7 @@ h1
 	background: #111;
 	color: #eee;
 	margin: 0;
-	padding: 0.1em 0.3em;
+	padding: 1em 0.3em 0.1em 0.3em;
 	font-size: 1.25em;
 }
 main > section
@@ -148,6 +148,7 @@ main > section > :not(h2) > *
 {
 	h1
 	{
+		padding-top: 0.1em;
 		font-size: 2em;
 	}
 	main > section > :not(h2) > *
