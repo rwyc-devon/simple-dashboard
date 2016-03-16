@@ -168,7 +168,7 @@ main > section > :not(h2) > *
 		text-align: center;
 	}
 }
-@media (min-width: 480px)
+@media (min-width: 500px)
 {
 	h1
 	{
