@@ -20,7 +20,7 @@ class memoryWidget extends cmdWidget
 		$this->max=$results[1];
 	}
 	static private function format($n) {
-		$suffixes=array("B", "KiB", "MiB", "GiB", "TiB", "PiB");
+		$suffixes=["B", "KiB", "MiB", "GiB", "TiB", "PiB"];
 		$threshold=800;
 		foreach($suffixes as $suffix) {
 			if($n<$threshold) {

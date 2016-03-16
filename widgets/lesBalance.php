@@ -44,13 +44,14 @@ class lesBalanceWidget
 		return "les.net balance";
 	}
 	public function status() {
+		$this->value();
 		if(!isset($this->balance)) {
 			return "dead";
 		}
-		else if($balance<=$this->critical) {
+		else if($this->balance<=$this->critical) {
 			return "critical";
 		}
-		else if($balance<=$this->warn) {
+		else if($this->balance<=$this->warn) {
 			return "warn";
 		}
 		else {

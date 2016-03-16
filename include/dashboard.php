@@ -4,7 +4,7 @@ function widget($index, $type="html")
 	global $root;
 	global $config;
 	$name=$config->widgets[$index]->name;
-	$options=isset($config->widgets[$index]->options)?$config->widgets[$index]->options:array();
+	$options=isset($config->widgets[$index]->options)?$config->widgets[$index]->options:[];
 	$class="${name}Widget";
 	$widget=new $class($options);
 	$title=$widget->title();
@@ -19,14 +19,13 @@ function widget($index, $type="html")
 			echo "<section tabindex='0' id='widget-$name' class='widget status-$status' data-timeout='$timeout' data-widget='$index'><h2>$title</h2>$html</section>";
 		}
 		else if($type=="json") {
-			return json_encode(array(
+			return json_encode([
 				"name"     => $name,
-				"class"    => $class,
 				"data"     => $widget->value(),
 				"status"   => $status,
 				"title"    => $title,
 				"timeout"  => $timeout
-			));
+			]);
 		}
 	}
 }
