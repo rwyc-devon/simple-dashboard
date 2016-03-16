@@ -3,6 +3,7 @@ class memoryWidget extends cmdWidget
 {
 	protected $command="free -b";
 	protected $regex='/:\s*(\d+)\s+(\d+)/m';
+	protected $icon="m";
 	private $warn=70;
 	private $critical=85;
 	public function __construct($options) {
