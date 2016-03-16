@@ -4,7 +4,7 @@
 	"widgets": [
 		{"name": "example"},
 		{
-			"name": "lesbalance",
+			"name": "lesBalance",
 			"options": {
 				"warn": 40,
 				"critical": 20,

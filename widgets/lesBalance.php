@@ -58,6 +58,7 @@ class lesBalanceWidget
 		}
 	}
 	public function html() {
+		$this->value();
 		$percent=$this->max? min(1, $this->balance/$this->max)*100 : 0;
 		return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$this->balance</span></div>";
 	}
