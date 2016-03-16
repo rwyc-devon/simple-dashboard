@@ -19,8 +19,8 @@ class loadWidget
 	}
 	public function value() {
 		if($this->load===null) {
-			$this->load=sys_getloadavg()[0]*100;
-			$this->normload=$this->load/$this->cpus;
+			$this->load=sys_getloadavg()[0];
+			$this->normload=$this->load/$this->cpus*100;
 		}
 		return $this->load;
 	}
@@ -47,6 +47,6 @@ class loadWidget
 	}
 	public function html() {
 		$this->value();
-		return "<div class='has-bar' data-icon='&#9729'><span class='bargraph' style='width:$this->normload%'></span><span class='percent'>$this->load</span></div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
+		return "<div class='has-bar' data-icon='&#9729'><span class='bargraph' style='width:$this->normload%'></span><span>$this->load</span></div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
 	}
 }
