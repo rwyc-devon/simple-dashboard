@@ -8,13 +8,13 @@ class loadWidget
 	private $cpus=1;
 	function __construct ($options) {
 		if(isset($options->warn)) {
-			$warn=$options->warn;
+			$this->warn=$options->warn;
 		}
 		if(isset($options->critical)) {
-			$critical=$options->critical;
+			$this->critical=$options->critical;
 		}
 		if(isset($options->cpus)) {
-			$cpus=$options->cpus;
+			$this->cpus=$options->cpus;
 		}
 	}
 	public function value() {
