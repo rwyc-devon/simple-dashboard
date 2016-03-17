@@ -8,6 +8,7 @@ class lesBalanceWidget
 	private $max=100;
 	private $warn=40;
 	private $critical=20;
+	private $error="";
 	function __construct ($options) {
 		if(isset($options->balance)) {
 			$this->balance=$options->balance;
@@ -32,13 +33,19 @@ class lesBalanceWidget
 		if(!isset($this->balance)) {
 			$result=lesnet_api("account/balance", "{}", true, $this->apikey, $this->idkey);
 			if($result) {
-				$this->balance=json_decode($result)->balance;
+				$result=json_decode($result);
+				if($result->status=="error") {
+					$this->error="$result->error: $result->error_detail";
+				}
+				else {
+					$this->balance=$result->balance;
+				}
 			}
 		}
 		return $this->balance;
 	}
 	public function timeout() {
-		return isset($this->balance)?10:60; #Try more frequently if it fails.
+		return (isset($this->balance))?10:60; #Try more frequently if it fails.
 	}
 	public function title() {
 		return "les.net balance";
@@ -60,7 +67,12 @@ class lesBalanceWidget
 	}
 	public function html() {
 		$this->value();
-		$percent=$this->max? min(1, $this->balance/$this->max)*100 : 0;
-		return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$this->balance</span></div>";
+		if($this->error) {
+			return "<div><span class='error'>$this->error</span></div>";
+		}
+		else {
+			$percent=$this->max? min(1, $this->balance/$this->max)*100 : 0;
+			return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$this->balance</span></div>";
+		}
 	}
 }

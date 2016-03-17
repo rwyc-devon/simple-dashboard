@@ -147,6 +147,10 @@ main > section > :not(h2) > *
 {
 	content: "$";
 }
+.error
+{
+	font-size: 0.75rem;
+}
 @media (min-width: 250px)
 {
 	h1
@@ -198,5 +202,9 @@ main > section > :not(h2) > *
 	main > section.status-dead :not(h2)
 	{
 		display: block;
+	}
+	.widget
+	{
+		width: 200px;
 	}
 }
