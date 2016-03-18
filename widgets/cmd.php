@@ -2,6 +2,7 @@
 class cmdWidget
 {
 	protected $command="echo test"; #override this. This is the full text of the command to run.
+	protected $file; #override this. This is the file in /proc to extract from.
 	protected $regex='/(.*)/'; #override this. This is the regular expression to extract the text out of the command output. By default
 	protected $result;
 	protected $result_formatted;
@@ -12,7 +13,12 @@ class cmdWidget
 	}
 	public function value() {
 		if(!isset($this->result)) {
-			$this->mapResults($this->run($this->command, $this->regex));
+			if($this->file) {
+				$this->mapResults(cmdWidget::get($this->file, $this->regex));
+			}
+			else {
+				$this->mapResults(cmdWidget::run($this->command, $this->regex));
+			}
 		}
 		return $this->result;
 	}
@@ -23,8 +29,19 @@ class cmdWidget
 	static protected function format($in) {
 		return $in;
 	}
+	static protected function get($file, $regex) {
+		if(is_readable("$file")) {
+			return cmdWidget::extract(explode("\n", file_get_contents($file)), $regex);
+		}
+		else {
+			return cmdWidget::run("cat $file", $regex);
+		}
+	}
 	static protected function run($command, $regex) {
 		exec($command, $lines);
+		return cmdWidget::extract($lines, $regex);
+	}
+	static private function extract($lines, $regex) {
 		$lines=implode($lines);
 		preg_match($regex, $lines, $results);
 		return $results;

@@ -1,7 +1,7 @@
 <?php
 class uptimeWidget extends cmdWidget
 {
-	protected $command="cat /proc/uptime";
+	protected $file="/proc/uptime";
 	protected $regex='/^(\d+(\.\d+)?)/';
 	protected $icon="t";
 	function __construct($options) {
