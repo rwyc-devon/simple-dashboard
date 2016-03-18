@@ -21,7 +21,7 @@ function widget($index, $type="html")
 		else if($type=="json") {
 			return json_encode([
 				"name"     => $name,
-				"data"     => $widget->value(),
+				"value"    => $widget->value(),
 				"status"   => $status,
 				"title"    => $title,
 				"timeout"  => $timeout
@@ -29,4 +29,3 @@ function widget($index, $type="html")
 		}
 	}
 }
-?>
