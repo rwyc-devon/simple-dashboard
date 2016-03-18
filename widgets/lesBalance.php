@@ -8,7 +8,7 @@ class lesBalanceWidget
 	private $max=100;
 	private $warn=40;
 	private $critical=20;
-	private $error="";
+	private $error=false;
 	function __construct ($options) {
 		if(isset($options->balance)) {
 			$this->balance=$options->balance;
@@ -30,7 +30,7 @@ class lesBalanceWidget
 		}
 	}
 	public function value() {
-		if(!isset($this->balance)) {
+		if($this->balance===null) {
 			$result=lesnet_api("account/balance", "{}", true, $this->apikey, $this->idkey);
 			if($result) {
 				$result=json_decode($result);
@@ -45,14 +45,14 @@ class lesBalanceWidget
 		return $this->balance;
 	}
 	public function timeout() {
-		return (isset($this->balance))?10:60; #Try more frequently if it fails.
+		return ($this->balance===null || $this->error)?10:60; #Try more frequently if connecting fails.
 	}
 	public function title() {
 		return "les.net balance";
 	}
 	public function status() {
 		$this->value();
-		if(!isset($this->balance)) {
+		if($this->balance===null) {
 			return "dead";
 		}
 		else if($this->balance<=$this->critical) {
@@ -66,13 +66,20 @@ class lesBalanceWidget
 		}
 	}
 	public function html() {
-		$this->value();
-		if($this->error) {
-			return "<div><span class='error'>$this->error</span></div>";
+		$balance=$this->value();
+		$error=$this->error;
+		if(!$this->error && $balance===null) {
+			$error="Connection failed";
 		}
 		else {
-			$percent=$this->max? min(1, $this->balance/$this->max)*100 : 0;
-			return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$this->balance</span></div>";
+			$error=$this->error;
+		}
+		if($error) {
+			return "<div><span class='error'>$error</span></div>";
+		}
+		else {
+			$percent=$this->max? min(1, $balance/$this->max)*100 : 0;
+			return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$balance</span></div>";
 		}
 	}
 }
