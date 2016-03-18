@@ -9,11 +9,12 @@ else { ?>
 <html>
 	<head>
 		<meta charset='UTF-8'>
+		<title><?php echo $config->title?></title>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
-		<h1><?php echo isset($config->title)? $config->title : "Dashboard"?></h1>
+		<h1><?php echo $config->title?></h1>
 		<main>
 <?php
 	prindent(3);
