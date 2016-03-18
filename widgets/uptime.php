@@ -4,14 +4,16 @@ class uptimeWidget extends cmdWidget
 	protected $command="cat /proc/uptime";
 	protected $regex='/^(\d+(\.\d+)?)/';
 	protected $icon="t";
-	public function __init() {
-		echo $this->$command;
+	function __construct($options) {
+		if(isset($options->goal) && is_numeric($options->goal)) {
+			$this->max=$options->goal*3600*24;
+		}
 	}
 	public function title() {
 		return "uptime";
 	}
 	public function status() {
-		return "normal";
+		return $this->value()>=$this->max? "good" : "normal";
 	}
 	public function timeout() {
 		return $this->value()>=(3600*24)? 10:1;
