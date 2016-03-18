@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 function init()
 {
 	global $root, $baseURL, $config;
@@ -12,15 +13,7 @@ function init()
 	$baseURL="${_SERVER["SERVER_NAME"]}/$path";
 
 	#load and transform config
-	$config=json_decode(file_get_contents("$root/config.json"));
-	if(!isset($config->sections)) {
-		$config->sections=[];
-	}
-	if(isset($config->widgets)) {
-		$config->sections[0]=(object)[];
-		$config->sections[0]->widgets=$config->widgets;
-		unset($config->widgets);
-	}
+	loadConfig();
 }
 init();
 #setup autoloading
