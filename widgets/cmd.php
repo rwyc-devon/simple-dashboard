@@ -18,7 +18,10 @@ class cmdWidget
 	}
 	protected function mapResults($results) { #override this to set what matches go to what properties. Is called from value(). You can use this to get max values, status, etc.
 		$this->result=$results[1];
-		$this->result_formatted=$results[1];
+		$this->result_formatted=$this->format($results[1]);
+	}
+	static protected function format($in) {
+		return $in;
 	}
 	static protected function run($command, $regex) {
 		exec($command, $lines);

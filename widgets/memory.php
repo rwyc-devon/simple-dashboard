@@ -19,12 +19,12 @@ class memoryWidget extends cmdWidget
 		$this->result_formatted=$this->format($results[2]);
 		$this->max=$results[1];
 	}
-	static private function format($n) {
-		$suffixes=["B", "KiB", "MiB", "GiB", "TiB", "PiB"];
+	static protected function format($n) {
+		$units=["B", "KiB", "MiB", "GiB", "TiB", "PiB"];
 		$threshold=800;
-		foreach($suffixes as $suffix) {
+		foreach($units as $unit) {
 			if($n<$threshold) {
-				return sprintf("%0.1f", round($n, 1)) . "<span class='suffix'>$suffix</span>";
+				return sprintf("%0.1f", round($n, 1)) . "<span class='unit'>$unit</span>";
 			}
 			$n/=1024;
 		}
