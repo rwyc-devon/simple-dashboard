@@ -1,8 +1,8 @@
 <?php
 include "include/base.php";
 include "include/dashboard.php";
-if(isset($_GET["widget"]) && $_GET["widget"] >= 0 && $_GET["widget"] < count($config->widgets)) {
-	widget($_GET["widget"]);
+if(isset($_GET["widget"])) {
+	widget($_GET["section"], $_GET["widget"]);
 }
 else { ?>
 <!DOCTYPE html>
@@ -13,15 +13,19 @@ else { ?>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 	</head>
 	<body>
-		<h1><?php echo $config->title?$config->title:"Dashboard"?></h1>
+		<h1><?php echo isset($config->title)? $config->title : "Dashboard"?></h1>
 		<main>
 			<?php
-				foreach($config->widgets as $index=>$widget) {
-					widget($index,$config->ajaxOnFirstLoad?"empty-html":"html");
-?>
-
-			<?php #to preserve indentation
-				}?>
+				if(isset($config->sections)) {
+					foreach($config->sections as $index=>$section) {
+						$label=isset($section->label)? $section->label : false;
+						section($index);
+					}
+				}
+				else {
+					section($config->widgets);
+				}
+			?>
 		</main>
 		<script src='ajax_stuff.js'></script>
 	</body>
