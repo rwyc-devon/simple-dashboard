@@ -43,7 +43,17 @@ abstract class cmdWidget
 	}
 	static private function extract($lines, $regex) {
 		$lines=implode($lines);
-		preg_match($regex, $lines, $results);
+		$results=[];
+		if(is_array($regex)) {
+			foreach($regex as $r) {
+				preg_match($r, $lines, $result);
+				unset($result[0]);
+				$results=array_merge($results, $result);
+			}
+		}
+		else {
+			preg_match($regex, $lines, $results);
+		}
 		return $results;
 	}
 	public function timeout() {

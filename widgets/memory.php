@@ -1,8 +1,8 @@
 <?php
 class memoryWidget extends cmdWidget
 {
-	protected $command="free -b";
-	protected $regex='/:\s*(\d+)\s+(\d+)/m';
+	protected $file="/proc/meminfo";
+	protected $regex=['/MemTotal:\s+(?P<total>\d+)/', '/MemFree:\s+(?P<free>\d+)/', '/Buffers:\s+(?P<buffers>\d+)/', '/Cached:\s+(?P<cache>\d+)/', '/Slab:\s+(?P<slab>\d+)/'];
 	protected $icon="m";
 	private $warn=70;
 	private $critical=85;
@@ -15,12 +15,13 @@ class memoryWidget extends cmdWidget
 		}
 	}
 	protected function mapResults($results) {
-		$this->result=$results[2];
-		$this->result_formatted=$this->format($results[2]);
-		$this->max=$results[1];
+		$used=$results["total"]-$results["free"]-$results["buffers"]-$results["cache"]-$results["slab"];
+		$this->result=$used;
+		$this->result_formatted=memoryWidget::format($used);
+		$this->max=$results['total'];
 	}
 	static protected function format($n) {
-		$units=["B", "KiB", "MiB", "GiB", "TiB", "PiB"];
+		$units=["KiB", "MiB", "GiB", "TiB", "PiB"];
 		$threshold=800;
 		foreach($units as $unit) {
 			if($n<$threshold) {
