@@ -1,13 +1,13 @@
 <?php
-class cmdWidget
+abstract class cmdWidget
 {
-	protected $command="echo test"; #override this. This is the full text of the command to run.
-	protected $file; #override this. This is the file in /proc to extract from.
-	protected $regex='/(.*)/'; #override this. This is the regular expression to extract the text out of the command output. By default
+	protected $command=""; #set this to the command you want to run, or...
+	protected $file; #set this to the name of the file you want to read (eg. from /proc)
+	protected $regex='/(.*)/'; #set this. This is the regular expression to extract the text out of the command output. By default
 	protected $result;
 	protected $result_formatted;
-	protected $max; #override this if you want a bar graph. Otherwise leave it alone.
-	protected $icon; #override this if you want an icon. Otherwise leave it alone.
+	protected $max; #set this if you want a bar graph. Otherwise leave it alone.
+	protected $icon; #set this if you want an icon. Otherwise leave it alone.
 	function __construct ($options) { #override this!
 		
 	}
