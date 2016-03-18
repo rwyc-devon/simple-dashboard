@@ -4,8 +4,15 @@ function loadConfig()
 	global $root, $config;
 	$file="$root/config.json";
 
+	#initialize config to an empty object in case loading config fails
 	$c=(object)[];
 
+	#if config doesn't exist try to create it
+	if(!file_exists($file)) {
+		copy("$root/config.example.json", $file);
+	}
+	
+	#read and parse config file
 	if(is_readable($file)) {
 		$c=json_decode(file_get_contents($file));
 	}
