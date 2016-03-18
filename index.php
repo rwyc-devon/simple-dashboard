@@ -15,17 +15,18 @@ else { ?>
 	<body>
 		<h1><?php echo isset($config->title)? $config->title : "Dashboard"?></h1>
 		<main>
-			<?php
-				if(isset($config->sections)) {
-					foreach($config->sections as $index=>$section) {
-						$label=isset($section->label)? $section->label : false;
-						section($index);
-					}
-				}
-				else {
-					section($config->widgets);
-				}
-			?>
+<?php
+	prindent(3);
+	if(isset($config->sections)) {
+		foreach($config->sections as $index=>$section) {
+			$label=isset($section->label)? $section->label : false;
+			section($index);
+		}
+	}
+	else {
+		section($config->widgets);
+	}
+?>
 		</main>
 		<script src='ajax_stuff.js'></script>
 	</body>

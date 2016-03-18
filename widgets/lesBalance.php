@@ -75,11 +75,11 @@ class lesBalanceWidget
 			$error=$this->error;
 		}
 		if($error) {
-			return "<div><span class='error'>$error</span></div>";
+			return "<div>\n\t<span class='error'>$error</span>\n</div>";
 		}
 		else {
-			$percent=$this->max? min(1, $balance/$this->max)*100 : 0;
-			return "<div class='has-bar' data-icon='&#9742'><span class='bargraph' style='width:$percent%'></span><span class='money'>$balance</span></div>";
+			$percent=round($this->max? min(1, $balance/$this->max)*100 : 0, 2);
+			return "<div class='has-bar' data-icon='&#9742'>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span class='money'>$balance</span>\n</div>";
 		}
 	}
 }

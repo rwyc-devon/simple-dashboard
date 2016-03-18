@@ -46,11 +46,11 @@ class cmdWidget
 			$class=" class='$this->class'";
 		}
 		if(isset($this->max)) {
-			$percent=$this->result/$this->max*100;
-			return "<div class='has-bar'$icon><span class='bargraph' style='width:$percent%'></span><span$class>$this->result_formatted</span></div>";
+			$percent=round($this->result/$this->max*100, 2);
+			return "<div class='has-bar'$icon>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span$class>$this->result_formatted</span>\n</div>";
 		}
 		else {
-			return "<div$icon><span$class>$this->result</span></div>";
+			return "<div$icon>\n\t<span$class>$this->result_formatted</span>\n</div>";
 		}
 	}
 }
