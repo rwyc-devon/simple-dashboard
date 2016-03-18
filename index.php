@@ -30,5 +30,4 @@ else { ?>
 		</main>
 		<script src='ajax_stuff.js'></script>
 	</body>
-</html>
-<?php }?>
+</html> <?php }?>

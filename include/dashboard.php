@@ -25,7 +25,7 @@ function widget($section, $index, $type="html")
 	$widget=new $class($options);
 	$title=$widget->title();
 	if($type=="empty-html") {
-		prindent(0,"<li tabindex='0' id='widget-$widget' class='widget pending' data-timeout='0' data-section='$section' data-widget='$index'><h2>$title</h2></li>");
+		prindent(0,"<li tabindex='0' id='widget-$name' class='widget pending' data-timeout='0' data-section='$section' data-widget='$index'>\n\t<h2>$title</h2>\n</li>");
 	}
 	else {
 		$status=$widget->status();
@@ -64,7 +64,7 @@ function section($index)
 	prindent(0, "<ol>", 1);
 	if($widgets) {
 		foreach($widgets as $i=>$widget) {
-			widget($index, $i, $config->ajaxOnFirstLoad? "empty-html" : "html");
+			widget($index, $i, $config->preloadWidgets? "html" : "empty-html");
 		}
 	}
 	prindent(-1, "</ol>");

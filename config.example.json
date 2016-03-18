@@ -1,6 +1,6 @@
 {
 	"title": "My Cool Dashboard",
-	"ajaxOnFirstLoad": false,
+	"preloadWidgets": true,
 	"sections": [
 		{
 			"label":"a section",

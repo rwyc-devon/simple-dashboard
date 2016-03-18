@@ -10,9 +10,9 @@ function loadConfig()
 		$c=json_decode(file_get_contents($file));
 	}
 
-	#set defalt title
-	if(!isset($c->ajaxOnFirstLoad)) {
-		$c->ajaxOnFirstLoad=true;
+	#set defalt preload setting
+	if(!isset($c->preloadWidgets)) {
+		$c->preloadWidgets=true;
 	}
 
 	#set defalt title
