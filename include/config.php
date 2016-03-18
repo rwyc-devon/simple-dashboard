@@ -11,6 +11,11 @@ function loadConfig()
 	}
 
 	#set defalt title
+	if(!isset($c->ajaxOnFirstLoad)) {
+		$c->ajaxOnFirstLoad=true;
+	}
+
+	#set defalt title
 	if(!isset($c->title)) {
 		$c->title="Dashboard";
 	}
