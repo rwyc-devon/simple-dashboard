@@ -33,7 +33,7 @@ main > section > label
 	color: #aaa;
 	font-size: 1.25em;
 	cursor: pointer;
-	padding-left: 1.5em;
+	padding-left: 0.8em;
 	position: relative;
 }
 main > section > label::before
@@ -220,6 +220,10 @@ h2
 		line-height: 1.5em;
 		width: 1.5em;
 		text-align: center;
+	}
+	main > section > label
+	{
+		padding-left: 1.5em;
 	}
 	main > section > label::before
 	{
