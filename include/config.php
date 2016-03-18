@@ -17,6 +17,11 @@ function loadConfig()
 		$c=json_decode(file_get_contents($file));
 	}
 
+	#set defalt prettyHtml setting
+	if(!isset($c->prettyHtml)) {
+		$c->prettyHtml=true;
+	}
+
 	#set defalt preload setting
 	if(!isset($c->preloadWidgets)) {
 		$c->preloadWidgets=true;

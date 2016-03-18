@@ -6,12 +6,18 @@ function indent($level, $text)
 }
 function prindent($increment, $text=false, $after=0)
 {
+	global $config;
 	static $level=0;
-	$level+=$increment;
-	if($text) {
-		echo indent($level, $text) . "\n";
+	if($config->prettyHtml) {
+		$level+=$increment;
+		if($text) {
+			echo indent($level, $text) . "\n";
+		}
+		$level+=$after;
 	}
-	$level+=$after;
+	else {
+		echo $text;
+	}
 }
 function widget($section, $index, $type="html")
 {
