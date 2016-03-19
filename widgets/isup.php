@@ -2,6 +2,8 @@
 class isupWidget
 {
 	private $up;
+	private $error;
+	private $time;
 	private $url="http://localhost/";
 	private $title="localhost";
 	private $interval=10;
@@ -30,6 +32,9 @@ class isupWidget
 			curl_setopt($c, CURLOPT_CONNECTTIMEOUT_MS, $this->timeout);
 			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 			$this->up=curl_exec($c);
+			$this->error=curl_error($c);
+			$this->status=curl_getinfo($c, CURLINFO_HTTP_CODE);
+			$this->time=round(curl_getinfo($c, CURLINFO_TOTAL_TIME)*1000, 1);
 			curl_close($c);
 		}
 		return $this->up;
@@ -44,8 +49,15 @@ class isupWidget
 		return $this->value()? "good" : "critical";
 	}
 	public function html() {
-		$up=$this->value()? "up" : "down";
 		$icon=$this->value()? "&#8679;" : "&#8681;";
-		return "<div data-icon='$icon'>\n\t<span>$up</span>\n</div>";
+		if($this->value()) {
+			return "<div data-icon='$icon'>\n\t<span>$this->time<span class='unit'>ms</span></span>\n</div>";
+		}
+		if($this->status) {
+			return "<div data-icon='$icon'>\n\t<span>$this->status</span>\n</div>";
+		}
+		else {
+			return "<div data-icon='$icon'>\n\t<span class='error'>$this->error</span>\n</div>";
+		}
 	}
 }
