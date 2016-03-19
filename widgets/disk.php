@@ -11,10 +11,13 @@ class diskWidget extends cmdWidget
 			$this->command="df $options->disk";
 			$this->title=basename($options->disk);
 		}
+		if(isset($options->title)) {
+			$this->title=$options->title;
+		}
 		if(isset($options->warn)) {
 			$this->warn=$options->warn;
 		}
-		if(isset($options->warn)) {
+		if(isset($options->critical)) {
 			$this->critical=$options->critical;
 		}
 	}

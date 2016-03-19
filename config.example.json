@@ -34,6 +34,7 @@
 					"name": "disk",
 					"options":{
 						"disk":"/dev/sda1",
+						"title":"root",
 						"warn":10,
 						"critical":1
 					}
