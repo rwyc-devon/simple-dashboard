@@ -10,8 +10,8 @@ class mysqlWidget
 	private $qps=false;
 	private $error=false;
 	private $max=100;
-	private $warn=100;
-	private $critical=200;
+	private $warn=80;
+	private $critical=150;
 	function __construct ($options) {
 		$this->port=ini_get("mysqli.default_port");
 		$this->socket=ini_get("mysqli.default_socket");
@@ -47,7 +47,7 @@ class mysqlWidget
 			if($this->error===null) {
 				$status=$connection->stat();
 				preg_match("/Queries per second avg:\s*([\d\.]+)/", $status, $matches);
-				$this->qps=$matches[1];
+				$this->qps=sprintf('%.2f', $matches[1]);
 			}
 		}
 		return $this->qps;
