@@ -3,7 +3,7 @@ class memoryWidget extends cmdWidget
 {
 	protected $file="/proc/meminfo";
 	protected $regex=['/MemTotal:\s+(?P<total>\d+)/', '/MemFree:\s+(?P<free>\d+)/', '/Buffers:\s+(?P<buffers>\d+)/', '/Cached:\s+(?P<cache>\d+)/', '/Slab:\s+(?P<slab>\d+)/'];
-	protected $icon="m";
+	protected $icon="&#9744;";
 	private $warn=70;
 	private $critical=85;
 	public function __construct($options) {

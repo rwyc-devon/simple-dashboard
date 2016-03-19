@@ -49,7 +49,7 @@ class isupWidget
 		return $this->value()? "good" : "critical";
 	}
 	public function html() {
-		$icon=$this->value()? "&#8679;" : "&#8681;";
+		$icon=$this->value()? "&#11014;" : "&#11015;";
 		if($this->value()) {
 			return "<div data-icon='$icon'>\n\t<span>$this->time<span class='unit'>ms</span></span>\n</div>";
 		}
