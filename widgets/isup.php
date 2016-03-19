@@ -4,7 +4,8 @@ class isupWidget
 	private $up;
 	private $url="http://localhost/";
 	private $title="localhost";
-	private $timeout=10;
+	private $interval=10;
+	private $timeout=500;
 	function __construct ($options) {
 		if(isset($options->url)) {
 			$this->url=$options->url;
@@ -15,6 +16,9 @@ class isupWidget
 		if(isset($options->title)) {
 			$this->title=$options->title;
 		}
+		if(isset($options->interval)) {
+			$this->interval=$options->interval;
+		}
 		if(isset($options->timeout)) {
 			$this->timeout=$options->timeout;
 		}
@@ -23,7 +27,7 @@ class isupWidget
 		if($this->up===null) {
 			$c=curl_init($this->url);
 			curl_setopt($c, CURLOPT_FAILONERROR, true);
-			curl_setopt($c, CURLOPT_CONNECTTIMEOUT_MS, 500);
+			curl_setopt($c, CURLOPT_CONNECTTIMEOUT_MS, $this->timeout);
 			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 			$this->up=curl_exec($c);
 			curl_close($c);
@@ -31,7 +35,7 @@ class isupWidget
 		return $this->up;
 	}
 	public function timeout() {
-		return $this->timeout;
+		return $this->interval;
 	}
 	public function title() {
 		return $this->title;

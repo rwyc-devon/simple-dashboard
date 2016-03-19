@@ -52,7 +52,14 @@
 						"pass":"my_password",
 						"host":"localhost"
 					}
-				}
+				},
+				{	"name":"isup",
+					"options": {
+						"url": "http://localhost/",
+						"title": "localhost",
+						"timeout":500,
+						"interval":6
+					}
 			]
 		}
 	]
