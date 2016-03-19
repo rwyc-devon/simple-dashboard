@@ -16,7 +16,7 @@ class uptimeWidget extends cmdWidget
 		return $this->value()>=$this->max? "good" : "normal";
 	}
 	public function timeout() {
-		return $this->value()>=(3600*24)? 10:1;
+		return $this->value()>=(3600*24)? 60:1;
 	}
 	static protected function format($in) {
 		$sec=$in%60;
