@@ -1,32 +1,56 @@
 {
 	"title": "My Cool Dashboard",
 	"preloadWidgets": true,
+	"widgets": [
+		{
+			"name": "lesBalance",
+			"options": {
+				"warn": 40,
+				"critical": 20,
+				"max": 60,
+				"apikey": "my_apikey",
+				"idkey": "my_idkey"
+			}
+		}
+	],
 	"sections": [
 		{
-			"label":"a section",
+			"label":"Hardware",
 			"widgets": [
-				{"name": "example"},
 				{
-					"name": "lesBalance",
+					"name": "uptime",
+					"options": {"goal":30}
+				},
+				{
+					"name": "load"
+				},
+				{
+					"name": "memory",
 					"options": {
-						"warn": 40,
-						"critical": 20,
-						"max": 60,
-						"apikey": "",
-						"idkey": ""
+						
+					}
+				},
+				{
+					"name": "disk",
+					"options":{
+						"disk":"/dev/sda1",
+						"warn":10,
+						"critical":1
 					}
 				}
 			]
 		},
 		{
-			"label":"another section",
+			"label":"Services",
 			"hidden":true,
 			"widgets": [
 				{
-					"name": "load"
-				},
-				{
-					"name": "memory"
+					"name":"mysql",
+					"options":{
+						"user":"my_username",
+						"pass":"my_password",
+						"host":"localhost"
+					}
 				}
 			]
 		}
