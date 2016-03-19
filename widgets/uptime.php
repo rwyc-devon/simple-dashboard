@@ -3,7 +3,7 @@ class uptimeWidget extends cmdWidget
 {
 	protected $file="/proc/uptime";
 	protected $regex='/^(\d+(\.\d+)?)/';
-	protected $icon="&#8986;";
+	protected $icon="&#9201;";
 	function __construct($options) {
 		if(isset($options->goal) && is_numeric($options->goal)) {
 			$this->max=$options->goal*3600*24;
