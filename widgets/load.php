@@ -47,6 +47,6 @@ class loadWidget
 	}
 	public function html() {
 		$this->value();
-		return "<div class='has-bar' data-icon='&#9729'>\n\t<span class='bargraph' style='width:$this->normload%'></span>\n\t<span>$this->load</span>\n</div>"; #TODO: there's gotta be something better than a cloud symbol for load avg.
+		return "<div class='has-bar' data-icon='&#9881'>\n\t<span class='bargraph' style='width:$this->normload%'></span>\n\t<span>$this->load</span>\n</div>";
 	}
 }
