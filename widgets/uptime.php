@@ -25,7 +25,7 @@ class uptimeWidget extends cmdWidget
 		$day=floor($in/(3600*24));
 		$format='%4$d<span class=\'unit\'>s</span>';
 		if($day && $day>10) {
-			$format='%1$d<span class=\'unit\'>d</span> %2$0<span class=\'unit\'>h</span>';
+			$format='%1$d<span class=\'unit\'>d</span> %2$d<span class=\'unit\'>h</span>';
 		}
 		elseif($day) {
 			$format='%1$d<span class=\'unit\'>d</span> %2$02d<span class=\'unit\'>:</span>%3$02d';
