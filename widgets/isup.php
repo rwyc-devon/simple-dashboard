@@ -68,7 +68,8 @@ class isupWidget
 		$icon=$this->value()? "&#11014;" : "&#11015;";
 		if($this->value()) {
 			$percent=min($this->time/$this->max, 1)*100;
-			return "<div class='has-bar' data-icon='$icon'>\n\t<span class='bargraph' style='width:$percent%'></span><span>$this->time<span class='unit'>ms</span></span>\n</div>";
+			$time=($this->time>=1000)? (round($this->time/1000, 2)."<span class='unit'>s</span>") : "$this->time<span class='unit'>ms</span>";
+			return "<div class='has-bar' data-icon='$icon'>\n\t<span class='bargraph' style='width:$percent%'></span><span>$time</span>\n</div>";
 		}
 		if($this->status) {
 			return "<div data-icon='$icon'>\n\t<span>$this->status</span>\n</div>";
