@@ -8,6 +8,8 @@ class isupWidget
 	private $title="localhost";
 	private $interval=10;
 	private $timeout=500;
+	private $max=2000;
+	private $warn=1600;
 	function __construct ($options) {
 		if(isset($options->url)) {
 			$this->url=$options->url;
@@ -23,6 +25,13 @@ class isupWidget
 		}
 		if(isset($options->timeout)) {
 			$this->timeout=$options->timeout;
+		}
+		if(isset($options->max)) {
+			$this->max=$options->max;
+			$this->warn=$options->max*0.8; #eh why not
+		}
+		if(isset($options->warn)) {
+			$this->warn=$options->warn;
 		}
 	}
 	public function value() {
@@ -46,12 +55,20 @@ class isupWidget
 		return $this->title;
 	}
 	public function status() {
-		return $this->value()? "good" : "critical";
+		$val=$this->value();
+		if(!$val) {
+			return "critical";
+		}
+		elseif($this->time>=$this->warn) {
+			return "warn";
+		}
+		return "normal";
 	}
 	public function html() {
 		$icon=$this->value()? "&#11014;" : "&#11015;";
 		if($this->value()) {
-			return "<div data-icon='$icon'>\n\t<span>$this->time<span class='unit'>ms</span></span>\n</div>";
+			$percent=min($this->time/$this->max, 1)*100;
+			return "<div class='has-bar' data-icon='$icon'>\n\t<span class='bargraph' style='width:$percent%'></span><span>$this->time<span class='unit'>ms</span></span>\n</div>";
 		}
 		if($this->status) {
 			return "<div data-icon='$icon'>\n\t<span>$this->status</span>\n</div>";
