@@ -33,7 +33,7 @@
 				{
 					"name": "disk",
 					"options":{
-						"disk":"/dev/sda1",
+						"disk":"/",
 						"title":"root",
 						"warn":10,
 						"critical":1

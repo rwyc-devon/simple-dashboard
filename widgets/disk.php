@@ -6,6 +6,7 @@ class diskWidget extends cmdWidget
 	private $available=0;
 	private $warn=10;
 	private $critical=1;
+	protected $cmd="df /";
 	public function __construct($options) {
 		if(isset($options->disk)) {
 			$this->command="df $options->disk";
