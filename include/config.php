@@ -24,7 +24,7 @@ function loadConfig()
 
 	#set defalt preload setting
 	if(!isset($c->preloadWidgets)) {
-		$c->preloadWidgets=true;
+		$c->preloadWidgets=false;
 	}
 
 	#set defalt title
