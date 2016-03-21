@@ -62,7 +62,7 @@ class isupWidget
 		elseif($this->time>=$this->warn) {
 			return "warn";
 		}
-		return "normal";
+		return "good";
 	}
 	public function html() {
 		$icon=$this->value()? "&#11014;" : "&#11015;";
