@@ -22,13 +22,13 @@ Put it in a web-accessible directory. Move `config.sample.php` to `config.php` a
 
 ###Features
 
-- Grouping of widgets, titles for groups. Maybe ability to collapse/expand groups
+- Refactor the Widget system to reduce redundant code in widgets
 - Caching of data cross-request, perhaps using CHDB or something similar, so that many users querying at once will not hammer upstream APIs
-- Add a webfont. Also maybe a dedicated icon font.
+- Add a webfont. Also maybe a dedicated icon font so I'm not stuck trying to find appropriate symbols from obscure Unicode chars.
 
 ###Widgets
 
-- Memory usage, temperature, disk usage, CPU usage, uptime, load. Also some small remote script and an option to pull from a remote host so that one can monitor a bunch of servers at once. This will require a widget format that allows supplying params from the config file, and will benefit from grouping (so you can group by host). This is what would make this actually useful to people.
+- Temperature, CPU usage, uptime. Also some small remote script and an option to pull from a remote host so that one can monitor a bunch of servers at once. This will require a widget format that allows supplying params from the config file, and will benefit from grouping (so you can group by host). This is what would make this actually useful to people.
 - App/service specific stuff as the need arises. I probably won't add support for the app you're using unless I happen to be using it too. However it is very easy to make your own widget!
 
 ##Contributing
