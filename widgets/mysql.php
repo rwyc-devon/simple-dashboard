@@ -78,7 +78,7 @@ class mysqlWidget
 			return "<div>\n\t<span class='error'>$this->error</span>\n</div>";
 		}
 		else {
-			return "<div class='has-bar' data-icon='&#9751'>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span>$qps<span class='unit'>q/s</span></span>\n</div>";
+			return "<div data-icon='&#9751'>\n\t<span>$qps<span class='unit'>q/s</span></span>\n</div>\n<span class='bargraph' style='width:$percent%'></span>";
 		}
 	}
 }

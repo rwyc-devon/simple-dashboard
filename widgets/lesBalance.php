@@ -79,7 +79,7 @@ class lesBalanceWidget
 		}
 		else {
 			$percent=round($this->max? min(1, $balance/$this->max)*100 : 0, 2);
-			return "<div class='has-bar' data-icon='&#9742'>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span class='money'>$balance</span>\n</div>";
+			return "<div data-icon='&#9742'>\n\t<span class='money'>$balance</span>\n</div>\n<span class='bargraph' style='width:$percent%'></span>";
 		}
 	}
 }

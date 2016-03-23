@@ -77,7 +77,7 @@ abstract class cmdWidget
 		}
 		if(isset($this->max)) {
 			$percent=round(min($this->result/$this->max*100, 100), 2);
-			return "<div class='has-bar'$icon>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span$class>$this->result_formatted</span>\n</div>";
+			return "<div class='has-bar'$icon>\n\t<span$class>$this->result_formatted</span>\n</div>\n<span class='bargraph' style='width:$percent%'></span>";
 		}
 		else {
 			return "<div$icon>\n\t<span$class>$this->result_formatted</span>\n</div>";

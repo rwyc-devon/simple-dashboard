@@ -164,7 +164,7 @@ h2
 {
 	display: block;
 	background: #111;
-	height: 0.5rem;
+	height: 0.25rem;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -208,10 +208,14 @@ h2
 	{
 		font-size: 2em;
 	}
+	[data-icon]
+	{
+		position: relative;
+		padding-right: 2.5em;
+	}
 	[data-icon]::after
 	{
 		content: attr(data-icon);
-		float: right;
 		color: inherit;
 		background: #111;
 		border-radius: 2em;
@@ -219,6 +223,9 @@ h2
 		line-height: 1.5em;
 		width: 1.5em;
 		text-align: center;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 	main > section > label
 	{

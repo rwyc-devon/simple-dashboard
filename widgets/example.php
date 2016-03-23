@@ -38,6 +38,6 @@ class exampleWidget
 		#there are CSS classes for .money and .percent. They just use ::before and ::after stuff to add a $ or % symbol in a lighter color. Note that it conflicts with the icon thing, so make sure not to give the same element a data-icon attribute and one of these classes.
 		$time=$this->value(); #NEVER assume that $this->time (or whatever variable you use for caching) is set. ALWAYS call the value() method.
 		$percent=round(date("s")/59*100, 2);
-		return "<div class='has-bar' data-icon='&#9760'>\n\t<span class='bargraph' style='width:$percent%'></span>\n\t<span>$time</span>\n</div>";
+		return "<div data-icon='&#9760'>\n\t<span>$time</span>\n</div>\n<span class='bargraph' style='width:$percent%'></span>";
 	}
 }

@@ -47,6 +47,6 @@ class loadWidget
 	}
 	public function html() {
 		$this->value();
-		return "<div class='has-bar' data-icon='&#9881'>\n\t<span class='bargraph' style='width:$this->normload%'></span>\n\t<span>$this->load</span>\n</div>";
+		return "<div class='has-bar' data-icon='&#9881'>\n\t<span>$this->load</span>\n</div>\n\t<span class='bargraph' style='width:$this->normload%'></span>";
 	}
 }
