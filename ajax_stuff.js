@@ -21,7 +21,7 @@ function reloadWidget(e)
 	});
 	xhr.addEventListener("error", function() {
 		enqueueWidget(e, 1);
-	}
+	});
 	xhr.open("GET", "?widget="+widget+"&section="+section);
 	e.classList.add("pending");
 	xhr.send();
