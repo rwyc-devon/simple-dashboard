@@ -1,3 +1,4 @@
+var retryInterval=1;
 function enqueueWidget(e, timeout)
 {
 	if(!timeout)
@@ -16,7 +17,7 @@ function reloadWidget(e)
 		enqueueWidget(newE);
 	});
 	xhr.addEventListener("error", function() {
-		enqueueWidget(e, 1);
+		enqueueWidget(e, retryInterval);
 	});
 	xhr.open("GET", "?widget="+widget+"&section="+section);
 	e.classList.add("pending");
