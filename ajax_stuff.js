@@ -26,6 +26,6 @@ function reloadWidget(e)
 (function(){
 	var widgets=document.getElementsByClassName("widget");
 	for(var i=0; i<widgets.length; i++) {
-		enqueueWidget(widgets[i]);
+		enqueueWidget(widgets[i], 0.001);
 	}
 })();
