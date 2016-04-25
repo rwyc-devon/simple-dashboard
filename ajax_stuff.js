@@ -19,9 +19,6 @@ function reloadWidget(e)
 		e.parentNode.replaceChild(newE, e);
 		enqueueWidget(newE);
 	});
-	xhr.addEventListener("error", function() {
-		enqueueWidget(e, 1);
-	});
 	xhr.open("GET", "?widget="+widget+"&section="+section);
 	e.classList.add("pending");
 	xhr.send();
