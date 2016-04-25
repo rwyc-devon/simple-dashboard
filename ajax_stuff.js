@@ -1,12 +1,8 @@
-function enqueueWidget(e)
-{
-	enqueueWidget(e, e.getAttribute("data-timeout"));
-}
 function enqueueWidget(e, timeout)
 {
-	if(timeout>=0) {
-		setTimeout(function(){reloadWidget(e)}, timeout*1000);
-	}
+	if(!timeout)
+		timeout=e.getAttribute("data-timeout");
+	setTimeout(function(){reloadWidget(e)}, timeout*1000);
 	e.addEventListener("click", function(){reloadWidget(this)});
 }
 function reloadWidget(e)
@@ -29,6 +25,6 @@ function reloadWidget(e)
 (function(){
 	var widgets=document.getElementsByClassName("widget");
 	for(var i=0; i<widgets.length; i++) {
-		enqueueWidget(widgets[i], 0.001);
+		enqueueWidget(widgets[i], 0);
 	}
 })();
