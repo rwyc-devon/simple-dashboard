@@ -1,6 +1,6 @@
 function enqueueWidget(e)
 {
-	enqueueWidget(e, e.getAttribute("data-timeout") || 5);
+	enqueueWidget(e, e.getAttribute("data-timeout"));
 }
 function enqueueWidget(e, timeout)
 {
