@@ -22,7 +22,6 @@ function reloadWidget(e)
 	xhr.open("GET", "?widget="+widget+"&section="+section);
 	e.classList.add("pending");
 	xhr.send();
-	console.log(xhr);
 }
 (function(){
 	var widgets=document.getElementsByClassName("widget");
