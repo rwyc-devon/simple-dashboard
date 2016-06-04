@@ -23,7 +23,7 @@ Put it in a web-accessible directory. Move `config.sample.php` to `config.php` a
 ###Features
 
 - Refactor the Widget system to reduce redundant code in widgets
-- Caching of data cross-request, perhaps using CHDB or something similar, so that many users querying at once will not hammer upstream APIs
+- Caching of data cross-request, so that many users querying at once will not hammer upstream APIs
 - Add a webfont. Also maybe a dedicated icon font so I'm not stuck trying to find appropriate symbols from obscure Unicode chars.
 
 ###Widgets
